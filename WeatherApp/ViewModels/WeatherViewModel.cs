@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WeatherApp.Models;
 
 namespace WeatherApp.ViewModels
 {
@@ -23,12 +24,25 @@ namespace WeatherApp.ViewModels
             }
         }
         public event PropertyChangedEventHandler? PropertyChanged;
-         
+
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        private CurrentCondition currentConditions;
 
+        public CurrentCondition CurrentConditions
+        {
+            get
+            {
+                return currentConditions;
+            }
+            set
+            {
+                currentConditions = value;
+                OnPropertyChanged("CurrentConditions");
+            }
+        }
     }
 
 }
