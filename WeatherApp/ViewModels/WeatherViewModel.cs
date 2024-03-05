@@ -24,13 +24,11 @@ namespace WeatherApp.ViewModels
             }
         }
         public event PropertyChangedEventHandler? PropertyChanged;
-
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private CurrentCondition currentConditions;
-
         public CurrentCondition CurrentConditions
         {
             get
@@ -43,6 +41,39 @@ namespace WeatherApp.ViewModels
                 OnPropertyChanged("CurrentConditions");
             }
         }
+        private City selectedCity;
+        public City SelectedCity
+        {
+            get
+            {
+                return selectedCity;
+            }
+            set
+            {
+                selectedCity = value;
+                OnPropertyChanged("selectedCity");
+            }
+        }
+        public WeatherViewModel()
+        {
+            if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            {
+                SelectedCity = new City()
+                {
+                    LocalizedName = "Hanoi City"
+                };
+                CurrentConditions = new CurrentCondition
+                {
+                    WeatherText = "Partly Sunny",
+                    Temperature = new Temperature
+                    {
+                        Metric = new Metric
+                        {
+                            Value = 20
+                        }
+                    }
+                };
+            }
+        }
     }
-
 }
