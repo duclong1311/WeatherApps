@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -26,9 +25,6 @@ namespace WeatherApp.ViewModels
                 OnPropertyChanged("Query");
             }
         }
-
-        public ObservableCollection<City> Cities { get; set; }
-
         public event PropertyChangedEventHandler? PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
@@ -58,7 +54,6 @@ namespace WeatherApp.ViewModels
             {
                 selectedCity = value;
                 OnPropertyChanged("selectedCity");
-                GetCurrentConditions();
             }
         }
         public WeatherViewModel()
@@ -74,33 +69,20 @@ namespace WeatherApp.ViewModels
                     WeatherText = "Partly Sunny",
                     Temperature = new Temperature
                     {
-                        Metric = new Units
+                        Metric = new Metric
                         {
-                            Value = "20"
+                            Value = 20
                         }
                     }
                 };
             }
 
             SearchCommand = new SearchCommand(this);
-            Cities = new ObservableCollection<City>();
-        }
-        private async void GetCurrentConditions()
-        {
-            Query = string.Empty;
-            Cities.Clear();
-            CurrentConditions = await AccuWeatherHelper.GetCurrentCondition(SelectedCity.Key);
         }
         public SearchCommand SearchCommand { get; set; }
         public async void MakeQuery()
         {
             var cities = await AccuWeatherHelper.GetCities(Query);
-
-            Cities.Clear();
-            foreach (var city in cities)
-            {
-                Cities.Add(city);
-            }
         }
     }
 }
