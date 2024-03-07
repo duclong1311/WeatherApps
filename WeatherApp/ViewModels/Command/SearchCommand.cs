@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace WeatherApp.ViewModels.Command
 {
-    public class SearchCommand : ICommand
+    internal class SearchCommand
     {
+<<<<<<< HEAD
         public WeatherViewModel VM { get; set; }
         public event EventHandler CanExecuteChanged
         {
@@ -37,5 +37,7 @@ namespace WeatherApp.ViewModels.Command
         {
             VM.MakeQuery();
         }
+=======
+>>>>>>> parent of 7772f34 (Binding command)
     }
 }

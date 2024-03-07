@@ -6,8 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Models;
-using WeatherApp.ViewModels.Command;
-using WeatherApp.ViewModels.Helpers;
 
 namespace WeatherApp.ViewModels
 {
@@ -81,6 +79,7 @@ namespace WeatherApp.ViewModels
                     }
                 };
             }
+<<<<<<< HEAD
 
             SearchCommand = new SearchCommand(this);
             Cities = new ObservableCollection<City>();
@@ -101,6 +100,8 @@ namespace WeatherApp.ViewModels
             {
                 Cities.Add(city);
             }
+=======
+>>>>>>> parent of 7772f34 (Binding command)
         }
     }
 }
