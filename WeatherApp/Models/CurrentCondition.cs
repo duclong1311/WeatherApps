@@ -8,22 +8,22 @@ namespace WeatherApp.Models
 {
     public class Metric
     {
-        public double Value { get; set; }
+        public string Value { get; set; }
         public string Unit { get; set; }
         public int UnitType { get; set; }
     }
 
-    public class Imperial
+    public class Units
     {
-        public int Value { get; set; }
+        public string Value { get; set; }
         public string Unit { get; set; }
         public int UnitType { get; set; }
     }
 
     public class Temperature
     {
-        public Metric Metric { get; set; }
-        public Imperial Imperial { get; set; }
+        public Units Metric { get; set; }
+        public Units Imperial { get; set; }
     }
 
     public class CurrentCondition
